@@ -5,9 +5,6 @@ import DeviceStore from './store/DeviceStore';
 import UserStore from './store/UserStore';
 
 export const Context = createContext(null)
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

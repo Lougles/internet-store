@@ -10,6 +10,7 @@ const AppRouter = () => {
   console.log(user);
   return (
     <Routes>
+      <Route  path='' element={<h1>qwert</h1>} />
       {user.isAuth && authRoutes.map(({path, Component}) => 
       <Route key={path} path={path} element={<Component/>} exact/>
       )}
