@@ -15,6 +15,5 @@ root.render(
     }} >
       <App />
     </Context.Provider>
-    <App />
   </React.StrictMode>
 );
