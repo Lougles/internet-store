@@ -17,7 +17,12 @@ export default class DeviceStore {
     this._devices = [
       {id: 1, name: "Iphone 12 pro", price: 999, rating: 5, img: 'https://estore.ua/media/catalog/product/cache/8/image/650x650/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-12-purple_1_.jpeg'},
       {id: 2, name: "Iphone 13", price: 1099, rating: 5, img: 'https://estore.ua/media/catalog/product/cache/8/image/650x650/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-12-purple_1_.jpeg'},
-      {id: 3, name: "Iphone 13 pro", price: 1199, rating: 5, img: 'https://estore.ua/media/catalog/product/cache/8/image/650x650/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-12-purple_1_.jpeg'}
+      {id: 3, name: "Iphone 13 pro", price: 1199, rating: 4, img: 'https://estore.ua/media/catalog/product/cache/8/image/650x650/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-12-purple_1_.jpeg'},
+      {id: 4, name: "Iphone 13 pro", price: 1199, rating: 3.8, img: 'https://estore.ua/media/catalog/product/cache/8/image/650x650/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-12-purple_1_.jpeg'},
+      {id: 5, name: "Iphone 13 pro", price: 1199, rating: 5, img: 'https://estore.ua/media/catalog/product/cache/8/image/650x650/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-12-purple_1_.jpeg'},
+      {id: 6, name: "Iphone 13 pro", price: 1199, rating: 5, img: 'https://estore.ua/media/catalog/product/cache/8/image/650x650/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-12-purple_1_.jpeg'},
+      {id: 7, name: "Iphone 13 pro", price: 1199, rating: 5, img: 'https://estore.ua/media/catalog/product/cache/8/image/650x650/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-12-purple_1_.jpeg'},
+      {id: 8, name: "Iphone 13 pro", price: 1199, rating: 5, img: 'https://estore.ua/media/catalog/product/cache/8/image/650x650/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-12-purple_1_.jpeg'}
     ]
     this._selectedType = {}
     this._selectedBrand = {}
