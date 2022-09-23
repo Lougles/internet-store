@@ -18,20 +18,9 @@ const CreateDevice = observer(({show, onHide}) => {
     getTypes().then(data => device.setTypes(data));
     getBrands().then(data => device.setBrands(data));
   }, [])
-
-  const addType = () => {
-    createDevice({}).then(data => {
-      setName('')
-      setPrice(0);
-      setFile(null);
-      setBrand(null);
-      setType(null);
-      onHide();
-    })
-  }
   const addInfo = () => {
     setInfo([...info, {
-      tittle: '', description: '', number: Date.now()
+      title: '', description: '', number: Date.now()
     }])
   }
   const deleteInfo = (number) => {
@@ -49,6 +38,16 @@ const CreateDevice = observer(({show, onHide}) => {
   }
   const changeInfo = (key, value, number) => {
     setInfo(info.map(i => i.number === number ? {...i, [key]: value} : i))
+  }
+  const addDevice = () => {
+    const formData = new FormData()
+    formData.append('name', name)
+    formData.append('price', price)
+    formData.append('img', file)
+    formData.append('brandId', device.selectedBrand.id)
+    formData.append('typeId', device.selectedType.id)
+    formData.append('info', JSON.stringify(info))
+    createDevice(formData).then(data => onHide())
   }
   return (
     <Modal
@@ -115,11 +114,15 @@ const CreateDevice = observer(({show, onHide}) => {
             <Row className='mt-4' key={i.number}>
               <Col md={4}>
                 <Form.Control
+                  value={i.title}
+                  onChange={(e) => changeInfo('title', e.target.value, i.number)}
                   placeholder='Input name of properties'
                 />
               </Col>
               <Col md={4}>
                 <Form.Control 
+                  value={i.description}
+                  onChange={(e) => changeInfo('description', e.target.value, i.number)}
                   placeholder='Input description of properties'
                 />
               </Col>
@@ -134,7 +137,7 @@ const CreateDevice = observer(({show, onHide}) => {
     </Modal.Body>
     <Modal.Footer>
       <Button variant={'outline-danger'} onClick={onHide}>Close</Button>
-      <Button variant={'outline-success'} onClick={addType}>Add</Button>
+      <Button variant={'outline-success'} onClick={addDevice}>Add</Button>
     </Modal.Footer>
   </Modal>
   )

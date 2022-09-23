@@ -13,10 +13,10 @@ const PORT = process.env.PORT || 1234;
 const app = express()
 app.use(express.json());
 app.use(cors());
+app.use(fileUpload({}))
 
 app.use('/api',router)
 app.use(express.static(__dirname + "/static"));
-app.use(fileUpload({}))
 app.use(errorHandler)
 
 const start = async () => {
