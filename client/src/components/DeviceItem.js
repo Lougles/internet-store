@@ -16,7 +16,6 @@ const DeviceItem = ({device}) => {
           <div>{device.rating}</div>
           <Image  src={Vector} width={18} height={18}/>
         </div>
-
       </Card>
       <div>
           {device.name}
