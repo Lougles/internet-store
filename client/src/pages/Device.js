@@ -10,8 +10,7 @@ const DevicePage = () => {
   useEffect(() => {
     getOneDevice(id).then(data => setDevice(data))
       // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
+  }, []);
   return (
     <Container className="mt-3">
       <Row>
