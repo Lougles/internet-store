@@ -13,15 +13,17 @@ export const createBrand = async(brand) => {
   return data;
 }
 export const getBrands = async() => {
-  const {data} = await $host.get('api/brand');
+  const {data} = await $host.get('api/brand' );
   return data;
 }
 export const createDevice = async(device) => {
   const {data} = await $authHost.post('api/device', device);
   return data;
 }
-export const getDevice = async() => {
-  const {data} = await $host.get('api/device');
+export const getDevice = async(typeId, brandId, page, limit = 5) => {
+  const {data} = await $host.get('api/device', {params: {
+      typeId, brandId, page, limit
+    }});
   return data;
 }
 export const getOneDevice = async(id) => {
