@@ -2,7 +2,7 @@ const { v4: uuidv4 } = require('uuid');
 const path = require('path')
 const {Device, DeviceInfo} = require('../models/models')
 const ApiError = require('../error/ApiError');
-const { where } = require('sequelize');
+const where = require('sequelize');
 
 class DeviceController {
   async create(req, res, next){
@@ -12,17 +12,15 @@ class DeviceController {
       let fileName = uuidv4() + ".jpg";
       img.mv(path.resolve(__dirname, '..', 'static', fileName));
       const device = await Device.create({name, price, brandId, typeId, img: fileName})
-
       if (info) {
         info = JSON.parse(info);
         info.forEach(i => DeviceInfo.create({title: i.title, description: i.description, deviceId: device.id}))
       }
-
       return res.json(device);
     } catch (e) {
-      next(new ApiError.badRequest(e.message))
+       next(new ApiError.badRequest(e.message))
+      console.log('here', e.message)
     }
-
   }
 
   async getAll(req, res){

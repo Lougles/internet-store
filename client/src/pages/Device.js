@@ -1,22 +1,21 @@
-import Button from "@restart/ui/esm/Button";
-import React from "react";
-import { Col, Container, Image, Row, Card } from "react-bootstrap";
-import star from '../assets/star.png'
+import React, { useEffect, useState } from "react";
+import { Col, Container, Image, Row, Card, Button } from "react-bootstrap";
+import star from '../assets/star.png';
+import { useParams } from "react-router-dom";
+import { getOneDevice } from "../http/deviceApi";
 
 const DevicePage = () => {
-  const device = {id: 1, name: "Iphone 12 pro", price: 999, rating: 5, img: 'https://estore.ua/media/catalog/product/cache/8/image/650x650/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-12-purple_1_.jpeg'};
-  const description = [
-    {id:1, title: 'Operate system', description: '5GB'},
-    {id:2, title: 'Camera', description: '12 MP'},
-    {id:3, title: 'Processor', description: 'Pentium 3'},
-    {id:4, title: 'Number of Cores', description: '2'},
-    {id:5, title: 'Battery', description: '4000'},
-  ]
+  const [device, setDevice] = useState({info: []});
+  const {id} = useParams();
+  useEffect(() => {
+    getOneDevice(id).then(data => setDevice(data))
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <Container className="mt-3">
       <Row>
         <Col md={4}>
-          <Image width={300} height={300} src={device.img} />
+          <Image width={300} height={300} src={process.env.REACT_APP_API_URL + device.img} />
         </Col>
         <Col md={4}>
           <Row className="d-flex flex-column align-items-center">
@@ -39,7 +38,7 @@ const DevicePage = () => {
       </Row>
       <Row className="d-flex flex-column m-3">
         <h1>Info: </h1>
-        {description.map((info, index) => 
+        {device.info.map((info, index) => 
         <Row key={info.id} style={{background: index % 2 === 0 ? 'lightgray' : 'transparent', padding: 10}}>
           {info.title}: {info.description}
         </Row>)}
